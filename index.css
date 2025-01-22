@@ -241,3 +241,23 @@ button {
   width: 100%;
   height: auto;
 }
+
+
+#sales-summary-container {
+  width: 100%; /* Opcional: ajusta el ancho de la tabla */
+  border-collapse: collapse; /* Para eliminar espacios entre bordes de celdas */
+  text-align: center; /* Centra horizontalmente el texto dentro de las celdas */
+  vertical-align: middle; /* Centra verticalmente el contenido dentro de las celdas */
+  margin: 0 auto; /* Centra la tabla dentro de su contenedor */
+}
+
+#sales-summary-container th,
+#sales-summary-container td {
+  padding: 10px; /* Agrega espacio alrededor del contenido de las celdas */
+  border: 1px solid #ccc; /* Opcional: agrega bordes para las celdas */
+}
+
+#sales-summary-container thead th {
+  background-color: #f4f4f4; /* Color de fondo para el encabezado */
+  font-weight: bold;
+}
