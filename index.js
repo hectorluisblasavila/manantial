@@ -16,7 +16,7 @@ products.forEach((product, index) => {
   productDiv.classList.add('product');
 
   productDiv.innerHTML = `
-    <img src="${product.img}" alt="${product.name}">
+    <img src="${product.img}" alt="${product.name}" width="100">
     <p>${product.name}</p>
     <p>Precio: S/ ${product.price.toFixed(2)}</p>
     <input type="number" id="quantity-${index}" min="0" placeholder="Cantidad">
@@ -65,6 +65,7 @@ document.getElementById('confirm-order').addEventListener('click', () => {
   localStorage.setItem('orders', JSON.stringify(orders)); // Guardar en localStorage
 
   renderOrders();
+  renderSalesSummary(); // Actualizar resumen de ventas
 
   alert(`Gracias, ${clientName}. Tu pedido ha sido confirmado.`);
   document.getElementById('client-name').value = ''; // Limpiar el nombre del cliente
@@ -93,7 +94,7 @@ function renderOrders() {
           <span class="subtotal">Subtotal: S/. ${productSubtotal.toFixed(2)}</span>
         </div>
       `;
-    }).join('');
+    }).join('');  
 
     orderDiv.innerHTML = `
       <p><b>Cliente:</b> ${order.clientName}</p>
@@ -118,6 +119,7 @@ function renderOrders() {
       if (!isNaN(newQuantity) && newQuantity >= 0) {
         orders[orderIndex].products[productIndex].quantity = newQuantity;
         updateTotals(orderIndex, productIndex);
+        renderSalesSummary(); // Actualizar resumen de ventas al modificar la cantidad
       }
     });
   });
@@ -134,6 +136,7 @@ function renderOrders() {
         orders.splice(orderIndex, 1); // Eliminar pedido completo
         localStorage.setItem('orders', JSON.stringify(orders));
         renderOrders();
+        renderSalesSummary(); // Actualizar resumen de ventas
       } else {
         console.log("Eliminación cancelada");
       }
@@ -184,7 +187,49 @@ function updateTotals(orderIndex, productIndex) {
   localStorage.setItem('orders', JSON.stringify(orders));
 }
 
-// Inicializar los pedidos
-if (orders.length > 0) {
-  renderOrders();
+// Renderizar resumen de ventas diarias
+function renderSalesSummary() {
+  const salesSummaryContainer = document.getElementById('sales-summary');
+  salesSummaryContainer.innerHTML = ''; // Limpiar la tabla
+
+  let totalQuantity = 0;
+  let totalAmount = 0;
+  const productSales = {};
+
+  orders.forEach(order => {
+    order.products.forEach(product => {
+      if (!productSales[product.name]) {
+        productSales[product.name] = { quantity: 0, amount: 0 };
+      }
+      productSales[product.name].quantity += product.quantity;
+      productSales[product.name].amount += product.quantity * product.price;
+    });
+  });
+
+  for (const productName in productSales) {
+    const productTotal = productSales[productName];
+    totalQuantity += productTotal.quantity;
+    totalAmount += productTotal.amount;
+
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${productName}</td>
+      <td>${productTotal.quantity}</td>
+      <td>S/ ${productTotal.amount.toFixed(2)}</td>
+    `;
+    salesSummaryContainer.appendChild(row);
+  }
+
+  // Mostrar total general
+  const totalRow = document.createElement('tr');
+  totalRow.innerHTML = `
+    <td><b>Total general</b></td>
+    
+    <td><b>S/ ${totalAmount.toFixed(2)}</b></td>
+  `;
+  salesSummaryContainer.appendChild(totalRow);
 }
+
+// Llamada inicial para renderizar
+renderOrders();
+renderSalesSummary();

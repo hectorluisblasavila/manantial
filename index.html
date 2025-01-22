@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,65 +14,67 @@
 </head>
 <body>
     <header class="fijo">
-	
         <div class="toppage">
-        
             <div class="contac">
                 <img class="iconos" src="productos/phono.png">
                 <div class="info1">
                     <a href="https://wa.me/c/51927668906" target="_blank">927668906</a>
                 </div>
             </div>
-          
             <div class="contac">
                 <img class="iconos" src="productos/ubicacion.png">
                 <div class="info3">
                     <a href="https://maps.app.goo.gl/G5BxLTMRjGfmWGqu6" target="_blank">Ubicación</a>
                 </div>
             </div>
-        
         </div>
-    
-    
-    <div class="cajalogo">
-
-            
-                        <img class="logo" src="productos/logo.jpg">
-                        <div class="social-icons">
-                              <a href="https://www.facebook.com/ElManantialDelSabor.Trujillo" target="_blank" class="icon facebook">
-                              <i class="fab fa-facebook"></i>
-                            </a>
-                          </div>
-                
+        <div class="cajalogo">
+            <img class="logo" src="productos/logo.jpg">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/ElManantialDelSabor.Trujillo" target="_blank" class="icon facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
             </div>
-	
-            
-        
-    </div></header>
+        </div>
+    </header>
     <h1>Ingresar Pedido</h1>
-
     <div>
         <label for="client-name">Nombre del cliente:</label>
         <input type="text" id="client-name" class="input" placeholder="Ingresa aqui">
-        <label for="whatsapp-number" >WhatsApp:</label>
+        <label for="whatsapp-number">WhatsApp:</label>
         <input type="tel" id="whatsapp-number" class="input" placeholder="Ingresa aqui" />
-      
     </div>
 
     <div id="products">
         <!-- Los productos se generarán dinámicamente aquí -->
     </div>
+
     <div id="whatsapp-container"></div>
     <button id="confirm-order">Confirmar Pedido</button>
-    <div class="order-list">
-        <h2>Pedidos</h2>
-        <div id="order-items">
-            <!-- Lista de pedido -->
-        </div>
-        
-    </div>
 
+    <div class="order-list">
+        <h2>Pedidos espera</h2>
+        <div id="order-items">
+            <!-- Lista de pedidos -->
+        </div>
+    </div>
     
+    <div id="sales-summary-container">
+        <h2>Resumen de Ventas Diarias</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad Total</th>
+                    <th>Dinero Total</th>
+                </tr>
+            </thead>
+            <tbody id="sales-summary">
+                <!-- Resumen generado dinámicamente -->
+            </tbody>
+            
+        </table>
+    </div>
 
     <script src="index.js"></script>
 </body>
