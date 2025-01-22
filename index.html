@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Productos</title>
+    <link rel="stylesheet" href="index.css">
+  
+</head>
+<body>
+    <h1>Ingresar Pedido</h1>
+
+    <div>
+        <label for="client-name">Nombre del cliente:</label>
+        <input type="text" id="client-name" placeholder="Ingresa tu nombre">
+        <label for="whatsapp-number">Número de WhatsApp:</label>
+        <input type="tel" id="whatsapp-number" placeholder="Ingresa tu número de WhatsApp" />
+      
+    </div>
+
+    <div id="products">
+        <!-- Los productos se generarán dinámicamente aquí -->
+    </div>
+    <div id="whatsapp-container"></div>
+    <button id="confirm-order">Confirmar Pedido</button>
+    <div class="order-list">
+        <h2>Pedidos</h2>
+        <div id="order-items">
+            <!-- Lista de pedido -->
+        </div>
+        
+    </div>
+
+    
+
+    <script src="index.js"></script>
+</body>
+</html>

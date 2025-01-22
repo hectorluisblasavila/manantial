@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+.product {
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+}
+.product img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.order-list {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+button {
+  margin: 5px;
+}
