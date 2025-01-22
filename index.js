@@ -16,7 +16,7 @@ products.forEach((product, index) => {
   productDiv.classList.add('product');
 
   productDiv.innerHTML = `
-    <img src="${product.img}" alt="${product.name}" width="100">
+    <img src="${product.img}" alt="${product.name}">
     <p>${product.name}</p>
     <p>Precio: S/ ${product.price.toFixed(2)}</p>
     <input type="number" id="quantity-${index}" min="0" placeholder="Cantidad">

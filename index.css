@@ -1,6 +1,93 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+*{
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: 1.3px;
+  text-decoration: none;
+  box-sizing: border-box;
+
+
+}
+
+.pagefull{
+  margin: 0px;
+  background-color: rgb(255, 255, 255);
+} 
+
+
+.fijo{
+  display: flex;
+  background-color: black;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.toppage{
+  background-color: #FFDB01;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+.iconos{
+  margin: 5px;
+height: 11px;
+}
+
+.contac{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  
+}
+
+.fijo{
+  display: flex;
+  background-color: black;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+
+.cajalogo{
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  position: relative; /* Para manejar la posición del elemento izquierdo */
+
+}
+
+.logo{
+  text-align: center; /* Centra el contenido del elemento */
+  height: 60px;
+  padding: 5px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  position: absolute;
+  right: 0; /* Alinea al lado izquierdo */
+  margin-right: 10px; /* Agrega espacio del borde si es necesario */
+}
+
+.social-icons a {
+  text-decoration: none;
+  font-size: 24px;
+  color: #f9dc05; /* Color negro */
+  transition: color 0.3s ease;
+}
+
+.product{
+display: flex;
+
+
 }
 .product {
   display: inline-block;
@@ -24,4 +111,70 @@ body {
 }
 button {
   margin: 5px;
+}
+
+.product input {
+  background-color: #f9dc05;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  height: 20px;
+  width: 70%;
+  padding-left: 5px;
+  outline: none;
+  margin: 3px;
+  text-align: center
+}
+.input {
+  background-color: #f9dc05;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  height: 20px;
+  width: 40%;
+  padding-left: 5px;
+  outline: none;
+  margin: 3px;
+  text-align: center
+}
+
+#products{
+   
+  margin: 1%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 165px));
+  justify-content: space-evenly;
+  justify-items: center;
+ 
+}
+
+.product{
+    
+    
+  margin: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+  margin-bottom: 5%;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+#confirm-order{
+  padding: 5px;
+  margin-top: 5%;
+  margin-left: 30%;
+  margin-bottom: 5%;
+  border-radius: 10%;
+  background-color: black;
+  color: #f9dc05;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  opacity: .9;
+   cursor: pointer;
+}
+
+.product img{
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
 }
