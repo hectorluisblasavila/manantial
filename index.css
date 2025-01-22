@@ -109,6 +109,19 @@ display: flex;
   justify-content: space-between;
   margin: 5px 0;
 }
+
+.uppercase-bold {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.price-style {
+  font-size: 11px;
+  color: rgb(177, 7, 7);
+}
+
+
 button {
   margin: 5px;
 }
@@ -135,6 +148,18 @@ button {
   margin: 3px;
   text-align: center
 }
+.edit-quantity{
+  background-color: #f9dc05;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  height: 20px;
+  width: 5px;
+  
+  outline: none;
+  margin: 3px;
+  text-align: center
+}
+
 
 #products{
    
@@ -165,6 +190,44 @@ button {
   margin-top: 5%;
   margin-left: 30%;
   margin-bottom: 5%;
+  border-radius: 10%;
+  background-color: black;
+  color: #f9dc05;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  opacity: .9;
+   cursor: pointer;
+}
+
+
+.order-item {
+  display: flex;
+  flex-direction: column; /* Alineación vertical */
+  gap: 15px; /* Espaciado entre los div hijos */
+  align-items: flex-start; /* Alineación a la izquierda (opcional) */
+}
+
+
+.delete-order{
+  height: 30px;
+  width: 80px;
+  border-radius: 10%;
+  background-color: black;
+  color: #f9dc05;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  opacity: .9;
+   cursor: pointer;
+
+
+}
+
+.product-detail{
+  font-size: 10px;
+}
+
+
+.send-whatsapp{
+  height: 30px;
+  width: 100px;
   border-radius: 10%;
   background-color: black;
   color: #f9dc05;

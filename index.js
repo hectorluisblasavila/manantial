@@ -17,8 +17,8 @@ products.forEach((product, index) => {
 
   productDiv.innerHTML = `
     <img src="${product.img}" alt="${product.name}" width="100">
-    <p>${product.name}</p>
-    <p>Precio: S/ ${product.price.toFixed(2)}</p>
+    <p class="uppercase-bold">${product.name}</p>
+    <p class="price-style">Precio: S/ ${product.price.toFixed(2)}</p>
     <input type="number" id="quantity-${index}" min="0" placeholder="Cantidad">
   `;
 
@@ -97,16 +97,24 @@ function renderOrders() {
     }).join('');  
 
     orderDiv.innerHTML = `
-      <p><b>Cliente:</b> ${order.clientName}</p>
-      <div class="order-products">
-        ${productDetails}
-      </div>
-      <strong>Total: S/ <span class="total-amount">${clientTotal.toFixed(2)}</span></strong>
-      <button class="delete-order" data-order-index="${index}">Eliminar Pedido</button>
-      <button class="send-whatsapp" data-whatsapp="${order.whatsappNumber}" data-order-index="${index}">Enviar a WhatsApp</button>
-    `;
+  <div class="order-header">
+    <p><b>Cliente:</b> ${order.clientName}</p>
+  </div>
+  
+  <div class="order-products">
+    ${productDetails}
+  </div>
+  
+  <div class="order-footer">
+    <strong>Total: S/ <span class="total-amount">${clientTotal.toFixed(2)}</span></strong>
+    <div class="order-buttons">
+      <button class="send-whatsapp" data-whatsapp="${order.whatsappNumber}" data-order-index="${index}">WhatsApp</button>
+      <button class="delete-order" data-order-index="${index}">Eliminar</button>
+    </div>
+  </div>
+`;
 
-    orderContainer.appendChild(orderDiv);
+orderContainer.appendChild(orderDiv);
   });
 
   // Eventos para actualizar subtotal y total en tiempo real
