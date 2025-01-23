@@ -224,6 +224,16 @@ button {
   font-size: 10px;
 }
 
+.mark-delivered{
+  height: 30px;
+  width: 100px;
+  border-radius: 10%;
+  background-color: black;
+  color: #f9dc05;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  opacity: .9;
+   cursor: pointer;
+}
 
 .send-whatsapp{
   height: 30px;
@@ -261,3 +271,4 @@ button {
   background-color: #f4f4f4; /* Color de fondo para el encabezado */
   font-weight: bold;
 }
+

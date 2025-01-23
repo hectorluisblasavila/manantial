@@ -30,7 +30,7 @@ document.getElementById('confirm-order').addEventListener('click', () => {
   const clientName = document.getElementById('client-name').value.trim();
   const whatsappNumber = document.getElementById('whatsapp-number').value.trim();
 
-  if (!clientName || !whatsappNumber) {
+  if (!clientName) {
     alert('Por favor, ingresa tu nombre y número de WhatsApp.');
     return;
   }
@@ -38,7 +38,8 @@ document.getElementById('confirm-order').addEventListener('click', () => {
   const newOrder = {
     clientName,
     whatsappNumber,
-    products: []
+    products: [],
+    status: 'Pendiente'
   };
 
   products.forEach((product, index) => {
@@ -77,7 +78,17 @@ function renderOrders() {
   const orderContainer = document.getElementById('order-items');
   orderContainer.innerHTML = '';
 
-  orders.forEach((order, index) => {
+  // Ordenar los pedidos: primero los pendientes, luego los entregados
+  const sortedOrders = orders.sort((a, b) => {
+    if (a.status === 'Pendiente' && b.status === 'Entregado') {
+      return -1; // "Pendiente" va antes que "Entregado"
+    } else if (a.status === 'Entregado' && b.status === 'Pendiente') {
+      return 1; // "Entregado" va después de "Pendiente"
+    }
+    return 0; // Mantener el mismo orden si ambos tienen el mismo estado
+  });
+
+  sortedOrders.forEach((order, index) => {
     const orderDiv = document.createElement('div');
     orderDiv.classList.add('order-item');
 
@@ -108,14 +119,40 @@ function renderOrders() {
   <div class="order-footer">
     <strong>Total: S/ <span class="total-amount">${clientTotal.toFixed(2)}</span></strong>
     <div class="order-buttons">
+    <button class="mark-delivered" data-order-index="${index}">${order.status}</button>
       <button class="send-whatsapp" data-whatsapp="${order.whatsappNumber}" data-order-index="${index}">WhatsApp</button>
       <button class="delete-order" data-order-index="${index}">Eliminar</button>
+      
     </div>
   </div>
 `;
 
 orderContainer.appendChild(orderDiv);
   });
+
+// Eventos para cambiar el estado del pedido
+document.querySelectorAll('.mark-delivered').forEach(button => {
+  button.addEventListener('click', event => {
+    const orderIndex = parseInt(button.getAttribute('data-order-index'));
+    const order = orders[orderIndex];
+
+    // Mostrar alerta de confirmación para cada pedido
+    const confirmDelivery = confirm("¿Estás seguro de que deseas marcar este pedido como entregado?");
+
+    if (confirmDelivery) {
+      if (order.status === 'Pendiente') {
+        order.status = 'Entregado';
+
+        // Mover el pedido al final de la lista
+        orders.push(...orders.splice(orderIndex, 1));
+
+      }
+
+      localStorage.setItem('orders', JSON.stringify(orders)); // Guardar cambios en localStorage
+      renderOrders(); // Re-renderizar pedidos
+    }
+  });
+});
 
   // Eventos para actualizar subtotal y total en tiempo real
   document.querySelectorAll('.edit-quantity').forEach(input => {
@@ -150,6 +187,8 @@ orderContainer.appendChild(orderDiv);
       }
     });
   });
+
+
 
   // Agregar eventos a los botones de WhatsApp
   document.querySelectorAll('.send-whatsapp').forEach(button => {
@@ -236,6 +275,21 @@ function renderSalesSummary() {
     <td><b>S/ ${totalAmount.toFixed(2)}</b></td>
   `;
   salesSummaryContainer.appendChild(totalRow);
+}
+
+
+function markAsDelivered(orderId) {
+  // Obtener el elemento del pedido
+  const orderElement = document.getElementById(orderId);
+
+  // Mover el pedido al final de la lista
+  const orderContainer = document.getElementById('order-items');
+  orderContainer.appendChild(orderElement);
+
+  // Actualizar el estado del pedido
+  const statusElement = document.getElementById(`status-${orderId}`);
+  statusElement.textContent = 'Entregado';
+  statusElement.classList.add('delivered');
 }
 
 // Llamada inicial para renderizar
