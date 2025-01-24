@@ -336,7 +336,7 @@ document.getElementById("delete-all").addEventListener("click", () => {
   if (confirmDelete) {
     // Vaciar la lista de pedidos y el localStorage
     orders = []; // Vaciar el array de pedidos
-    localStorage.removeItem("Neworders"); // Eliminar los pedidos del localStorage
+    localStorage.removeItem("orders"); // Eliminar los pedidos del localStorage
 
     // Re-renderizar la lista de pedidos (quedará vacía)
     renderOrders();
