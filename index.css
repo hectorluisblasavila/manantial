@@ -186,13 +186,15 @@ button {
 }
 
 #confirm-order{
+  height: 40px;
+  font-size: 16px;
   padding: 5px;
   margin-top: 5%;
   margin-left: 30%;
   margin-bottom: 5%;
-  border-radius: 10%;
+  border-radius: 5px;
   background-color: black;
-  color: #f9dc05;
+  color: white;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   opacity: .9;
    cursor: pointer;
