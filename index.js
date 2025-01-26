@@ -227,7 +227,7 @@ function renderOrders() {
       message += `*MUCHAS GRACIAS POR SU COMPRA*`;
 
       const whatsappLink = `https://wa.me/${
-        51order.whatsappNumber
+        order.whatsappNumber
       }?text=${encodeURIComponent(message)}`;
       window.open(whatsappLink, "_blank");
     });
