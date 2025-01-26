@@ -212,7 +212,7 @@ function renderOrders() {
       const order = orders[orderIndex];
 
       // Construir el mensaje con todos los detalles del pedido
-       let message = `*EL MANANTIAL DEL SABOR*\n\n*Detalle de su Pedido*\n`;
+       let message = `😁*EL MANANTIAL DEL SABOR*\n\n*Detalle de su Pedido*\n`;
 
       order.products.forEach((product) => {
         message += `- ${product.quantity} x ${
