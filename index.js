@@ -224,7 +224,7 @@ function renderOrders() {
       message += `*Total: S/ ${order.products
         .reduce((total, product) => total + product.price * product.quantity, 0)
         .toFixed(2)}*\n\n`;
-      message += `*MUCHAS GRACIAS POR SU COMPRA*`;
+      message += `*MUCHAS GRACIAS POR SU COMPRA*`, ${newOrder.clientName};
 
       const whatsappLink = `https://wa.me/51${
         order.whatsappNumber
