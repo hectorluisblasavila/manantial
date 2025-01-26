@@ -211,20 +211,18 @@ function renderOrders() {
       const orderIndex = button.getAttribute("data-order-index");
       const order = orders[orderIndex];
 
-      // Construir el mensaje con todos los detalles del pedido
-       let message = `😁*EL MANANTIAL DEL SABOR*\n\n*Detalle de su Pedido*\n`;
+       // Construir el mensaje en UTF-8 para WhatsApp
+let message = `*EL MANANTIAL DEL SABOR*\n\n🌟 *Detalle de su Pedido* 🌟\n`;
 
-      order.products.forEach((product) => {
-        message += `- ${product.quantity} x ${
-          product.name
-        } (S/. ${product.price.toFixed(2)}) = S/. ${(
-          product.quantity * product.price
-        ).toFixed(2)}\n`;
-      });
-      message += `*Total: S/ ${order.products
-        .reduce((total, product) => total + product.price * product.quantity, 0)
-        .toFixed(2)}*\n\n`;
-     message += `${order.clientName.toUpperCase()}, *MUCHAS GRACIAS POR SU COMPRA!*`;
+order.products.forEach((product) => {
+  message += `- ✅ ${product.quantity} x ${product.name} (S/. ${product.price.toFixed(2)}) = S/. ${(product.quantity * product.price).toFixed(2)}\n`;
+});
+
+message += `\n💵 *Total: S/ ${order.products
+  .reduce((total, product) => total + product.price * product.quantity, 0)
+  .toFixed(2)}*\n\n`;
+
+message += `🎉 ${order.clientName.toUpperCase()}, *¡MUCHAS GRACIAS POR SU COMPRA!* 😊\n`;
 
       const whatsappLink = `https://wa.me/51${
         order.whatsappNumber
